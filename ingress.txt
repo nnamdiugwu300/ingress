@@ -1,0 +1,25 @@
+First we have to install nginx ingress in our cluster using helm
+Helm must be installed in your cluster also
+You can create a namespace to install nginx and all its properties.
+Add the Helm repository using the command below
+$helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+$helm repo ls
+$helm install ingress-nginx ingress-nginx/ingress-nginx \
+--namespace <yournamespace>
+--set controller.replicaCount=2
+Note that the last 2 lines can be optional
+run kubectl get ingress to make sure that a loadbalancer was created and that it works well and has a public Ip assigned on azure.
+$kubectl get ingress -n <yourns>
+
+You can now go back to azure and configure a DNS zone pointing your domanin name
+if your domain name is outside azure remember to add the name servers to your dns vendor configuration
+
+A nameserver is a server in the DNS that translates domain names into IP addresses.
+Nameservers store and organize DNS records, each of which pairs a domain with one or more IP addresses
+next you have to create an A list record and point the host path to the loadbalancer public ip
+You can also create a cname for the root host path. and create an alias of www pointing to your main root host path
+www ---> s2xtech.com
+ Then you have to configure an ingress object/Kind to apply in your kubernetes cluster
+ I have attached a sample ingress to use
+ Note that you must declare where the root loadbalancer goes to as seen in the last Http: paths declaration in the manifest.
+ You can declare it seperately.
