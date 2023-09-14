@@ -4,7 +4,7 @@ You can create a namespace to install nginx and all its properties.
 Add the Helm repository using the command below
 $helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 $helm repo ls
-$helm install ingress-nginx ingress-nginx/ingress-nginx \
+$helm install ingress-nginx nginx/ingress-nginx \
 --namespace <yournamespace>
 --set controller.replicaCount=2
 Note that the last 2 lines can be optional
