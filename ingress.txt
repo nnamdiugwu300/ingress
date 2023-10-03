@@ -10,7 +10,11 @@ $helm install ingress-nginx nginx/ingress-nginx \
 Note that the last 2 lines can be optional
 run kubectl get ingress to make sure that a loadbalancer was created and that it works well and has a public Ip assigned on azure.
 $kubectl get ingress -n <yourns>
+---
+you can also install nginx ingress controller on azure using the command below
 
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml -n ingress-nginx
+---
 You can now go back to azure and configure a DNS zone pointing your domanin name
 if your domain name is outside azure remember to add the name servers to your dns vendor configuration
 
