@@ -4,10 +4,12 @@ You can create a namespace to install nginx and all its properties.
 Add the Helm repository using the command below
 $helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 $helm repo ls
-$helm install ingress-nginx nginx/ingress-nginx \
---namespace <yournamespace>
---set controller.replicaCount=2
-Note that the last 2 lines can be optional
+
+USe this as the class would be set to nginx
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+  --set controller.ingressClass=nginx \
+  --namespace ingress-nginx
+
 run kubectl get ingress to make sure that a loadbalancer was created and that it works well and has a public Ip assigned on azure.
 $kubectl get ingress -n <yourns>
 ---
