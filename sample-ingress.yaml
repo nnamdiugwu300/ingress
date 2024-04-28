@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: apm
+spec:
+  ingressClassName: "nginx"  # Updated annotation to spec field
+  rules:
+  - host: grafana.camh-test.ca
+    http:
+      paths:
+      - path: /  # Adjusted path to match regex syntax
+        pathType: Prefix  # Changed pathType to ImplementationSpecific
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 80
+----
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kibana-ingress
+  namespace: logging
+spec:
+  ingressClassName: "nginx"  # Updated annotation to spec field
+  rules:
+  - host: kibana.camh-test.ca
+    http:
+      paths:
+      - path: /  # Adjusted path to match regex syntax
+        pathType: Prefix  # Changed pathType to ImplementationSpecific
+        backend:
+          service:
+            name: kibana-kibana
+            port:
+              number: 5601
