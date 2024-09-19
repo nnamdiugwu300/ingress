@@ -3,8 +3,8 @@
   --namespace $NAMESPACE \
   --set controller.replicaCount=2 \
   --set controller.nodeSelector."kubernetes\.io/os"="linux" \
-  --set controller.nodeSelector."kubernetes\.io/hostname"="aks-common-29443713-vmss000000" \
+  --set controller.nodeSelector."kubernetes\.io/hostname"="aks-common-18179265-vmss000000" \
   --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"="/healthz" \
   --set controller.service.externalTrafficPolicy="Local" \
-  --set controller.service.loadBalancerIP="10.27.152.254" \
+  --set controller.service.loadBalancerIP="10.27.184.254" \
   --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"="true"
